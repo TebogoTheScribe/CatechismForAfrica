@@ -1,0 +1,39 @@
+[build]
+  publish = "."
+  command = "echo 'No build step required for static site'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "frame-src https://www.youtube.com https://www.youtube-nocookie.com;"
+
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/content"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/licensing"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/subscribe"
+  to = "/"
+  status = 200

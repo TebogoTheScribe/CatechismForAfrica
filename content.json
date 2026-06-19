@@ -1,0 +1,145 @@
+{
+  "site": {
+    "title": "Catechism for Africa",
+    "tagline": "Catholic Catechetical Formation",
+    "hero_title": "Faith Formation for Every African Catholic",
+    "hero_subtitle": "Comprehensive catechetical resources designed for parishes, dioceses, and individuals seeking deeper understanding of the Catholic faith."
+  },
+  "videos": [
+    {
+      "id": "video_001",
+      "title": "Introduction to the RCIA Journey",
+      "category": "rcia",
+      "description": "An overview of the Rite of Christian Initiation of Adults, its stages, and what candidates can expect.",
+      "duration": "24 min",
+      "level": "Beginner",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_002",
+      "title": "The Period of Inquiry & Evangelization",
+      "category": "rcia",
+      "description": "Understanding the pre-catechumenate phase and how to accompany those first exploring the Catholic faith.",
+      "duration": "32 min",
+      "level": "Beginner",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_003",
+      "title": "The Sacrament of Baptism",
+      "category": "sacraments",
+      "description": "Exploring the theology, ritual, and significance of Baptism as the gateway to Christian life.",
+      "duration": "28 min",
+      "level": "Intermediate",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_004",
+      "title": "The Holy Eucharist: Source & Summit",
+      "category": "sacraments",
+      "description": "A deep dive into the Real Presence, the Mass, and the centrality of the Eucharist in Catholic life.",
+      "duration": "45 min",
+      "level": "Intermediate",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_005",
+      "title": "Reconciliation & God's Mercy",
+      "category": "sacraments",
+      "description": "Understanding the Sacrament of Penance, its healing power, and the beauty of divine mercy.",
+      "duration": "22 min",
+      "level": "All Levels",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_006",
+      "title": "Introduction to the Old Testament",
+      "category": "scripture",
+      "description": "Navigating the Hebrew Scriptures: historical books, wisdom literature, and the prophetic tradition.",
+      "duration": "38 min",
+      "level": "Beginner",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_007",
+      "title": "The Four Gospels: Portrait of Christ",
+      "category": "scripture",
+      "description": "Comparing Matthew, Mark, Luke, and John to understand the richness of the Gospel tradition.",
+      "duration": "42 min",
+      "level": "Intermediate",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_008",
+      "title": "Catholic Social Teaching in Africa",
+      "category": "morality",
+      "description": "Applying the Church's social doctrine to contemporary African challenges: justice, dignity, and solidarity.",
+      "duration": "35 min",
+      "level": "Advanced",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    },
+    {
+      "id": "video_009",
+      "title": "Building a Personal Prayer Life",
+      "category": "prayer",
+      "description": "Practical guidance on developing consistent prayer habits: lectio divina, the Rosary, and contemplation.",
+      "duration": "26 min",
+      "level": "All Levels",
+      "youtube_id": "",
+      "has_guide": true,
+      "status": "coming_soon"
+    }
+  ],
+  "pricing": {
+    "monthly": {
+      "price": "$4.99",
+      "period": "/month",
+      "features": [
+        "Full video library access",
+        "Downloadable study guides",
+        "Personal progress tracking",
+        "Mobile & desktop access",
+        "Cancel anytime"
+      ]
+    },
+    "annual": {
+      "price": "$39.99",
+      "period": "/year",
+      "features": [
+        "Everything in Monthly",
+        "33% savings vs monthly",
+        "Exclusive webinars",
+        "Certificate of completion",
+        "Priority support"
+      ],
+      "featured": true
+    },
+    "group": {
+      "price": "$2.99",
+      "period": "/user/month",
+      "features": [
+        "Minimum 5 users",
+        "Group progress dashboard",
+        "Discussion forums",
+        "Coordinator tools",
+        "Bulk pricing available"
+      ]
+    }
+  }
+}

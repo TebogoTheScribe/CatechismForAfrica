@@ -1,0 +1,155 @@
+backend:
+  name: git-gateway
+  branch: main
+  repo: TebogoTheScribe/CatechismForAfrica
+
+publish_mode: editorial_workflow
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+site_url: https://catechism-for-africa.netlify.app
+display_url: https://catechism-for-africa.netlify.app
+logo_url: https://catechism-for-africa.netlify.app/assets/images/logo.png
+
+collections:
+  - name: "site_settings"
+    label: "Site Settings"
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "content.json"
+        fields:
+          - label: "Site Title"
+            name: "title"
+            widget: "string"
+            default: "Catechism for Africa"
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+            default: "Catholic Catechetical Formation"
+          - label: "Hero Title"
+            name: "hero_title"
+            widget: "string"
+            default: "Faith Formation for Every African Catholic"
+          - label: "Hero Subtitle"
+            name: "hero_subtitle"
+            widget: "text"
+            default: "Comprehensive catechetical resources designed for parishes, dioceses, and individuals seeking deeper understanding of the Catholic faith."
+
+  - name: "videos"
+    label: "Video Content"
+    folder: "content/videos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Video ID"
+        name: "id"
+        widget: "string"
+        hint: "Unique identifier (e.g., video_001)"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "RCIA", value: "rcia" }
+          - { label: "Sacraments", value: "sacraments" }
+          - { label: "Scripture", value: "scripture" }
+          - { label: "Morality", value: "morality" }
+          - { label: "Prayer & Spirituality", value: "prayer" }
+      - label: "Description"
+        name: "description"
+        widget: "text"
+      - label: "Duration"
+        name: "duration"
+        widget: "string"
+        hint: "e.g., 24 min"
+      - label: "Level"
+        name: "level"
+        widget: "select"
+        options:
+          - { label: "Beginner", value: "Beginner" }
+          - { label: "Intermediate", value: "Intermediate" }
+          - { label: "Advanced", value: "Advanced" }
+          - { label: "All Levels", value: "All Levels" }
+      - label: "YouTube Video ID"
+        name: "youtube_id"
+        widget: "string"
+        hint: "Paste the YouTube video ID here (e.g., dQw4w9WgXcQ). Leave empty for Coming Soon."
+        required: false
+      - label: "Has Study Guide"
+        name: "has_guide"
+        widget: "boolean"
+        default: true
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Coming Soon", value: "coming_soon" }
+          - { label: "Published", value: "published" }
+          - { label: "Draft", value: "draft" }
+        default: "coming_soon"
+
+  - name: "pricing"
+    label: "Pricing Plans"
+    editor:
+      preview: false
+    files:
+      - name: "plans"
+        label: "Subscription Plans"
+        file: "content/pricing.json"
+        fields:
+          - label: "Monthly Plan"
+            name: "monthly"
+            widget: "object"
+            fields:
+              - { label: "Price", name: "price", widget: "string", default: "$4.99" }
+              - { label: "Period", name: "period", widget: "string", default: "/month" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+          - label: "Annual Plan"
+            name: "annual"
+            widget: "object"
+            fields:
+              - { label: "Price", name: "price", widget: "string", default: "$39.99" }
+              - { label: "Period", name: "period", widget: "string", default: "/year" }
+              - { label: "Featured", name: "featured", widget: "boolean", default: true }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+          - label: "Group Plan"
+            name: "group"
+            widget: "object"
+            fields:
+              - { label: "Price", name: "price", widget: "string", default: "$2.99" }
+              - { label: "Period", name: "period", widget: "string", default: "/user/month" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About Page"
+        file: "content/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "About Catechism for Africa" }
+          - { label: "Subtitle", name: "subtitle", widget: "string", default: "Equipping the Church in Africa with world-class catechetical resources" }
+          - label: "Mission"
+            name: "mission"
+            widget: "markdown"
+          - label: "Story"
+            name: "story"
+            widget: "markdown"
+          - label: "Approach"
+            name: "approach"
+            widget: "markdown"

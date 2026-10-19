@@ -5,13 +5,15 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# frame-src must allow YouTube lesson embeds and the Netlify Identity login frame.
+# Other resource types stay unrestricted so the content manager and fonts keep working.
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "frame-src https://www.youtube.com https://www.youtube-nocookie.com;"
+    Content-Security-Policy = "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com https://identity.netlify.com;"
 
 [[redirects]]
   from = "/home"
@@ -35,6 +37,16 @@
 
 [[redirects]]
   from = "/subscribe"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/explainers"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/apologetics"
   to = "/"
   status = 200
 

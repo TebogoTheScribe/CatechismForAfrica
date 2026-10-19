@@ -10,146 +10,203 @@ public_folder: "/assets/images/uploads"
 
 site_url: https://catechism-for-africa.netlify.app
 display_url: https://catechism-for-africa.netlify.app
-logo_url: https://catechism-for-africa.netlify.app/assets/images/logo.png
+logo_url: /assets/images/logo.png
 
 collections:
-  - name: "site_settings"
-    label: "Site Settings"
+  - name: "site_content"
+    label: "Site content"
     editor:
       preview: false
     files:
       - name: "general"
-        label: "General Settings"
+        label: "Lessons, explainers, apologetics, and site text"
         file: "content.json"
         fields:
-          - label: "Site Title"
+          - label: "Site title"
             name: "title"
             widget: "string"
-            default: "Catechism for Africa"
           - label: "Tagline"
             name: "tagline"
             widget: "string"
-            default: "Catholic Catechetical Formation"
-          - label: "Hero Title"
+          - label: "Hero title"
             name: "hero_title"
             widget: "string"
-            default: "Faith Formation for Every African Catholic"
-          - label: "Hero Subtitle"
+          - label: "Hero subtitle"
             name: "hero_subtitle"
             widget: "text"
-            default: "Comprehensive catechetical resources designed for parishes, dioceses, and individuals seeking deeper understanding of the Catholic faith."
-
-  - name: "videos"
-    label: "Video Content"
-    folder: "content/videos"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - label: "Video ID"
-        name: "id"
-        widget: "string"
-        hint: "Unique identifier (e.g., video_001)"
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options:
-          - { label: "RCIA", value: "rcia" }
-          - { label: "Sacraments", value: "sacraments" }
-          - { label: "Scripture", value: "scripture" }
-          - { label: "Morality", value: "morality" }
-          - { label: "Prayer & Spirituality", value: "prayer" }
-      - label: "Description"
-        name: "description"
-        widget: "text"
-      - label: "Duration"
-        name: "duration"
-        widget: "string"
-        hint: "e.g., 24 min"
-      - label: "Level"
-        name: "level"
-        widget: "select"
-        options:
-          - { label: "Beginner", value: "Beginner" }
-          - { label: "Intermediate", value: "Intermediate" }
-          - { label: "Advanced", value: "Advanced" }
-          - { label: "All Levels", value: "All Levels" }
-      - label: "YouTube Video ID"
-        name: "youtube_id"
-        widget: "string"
-        hint: "Paste the YouTube video ID here (e.g., dQw4w9WgXcQ). Leave empty for Coming Soon."
-        required: false
-      - label: "Has Study Guide"
-        name: "has_guide"
-        widget: "boolean"
-        default: true
-      - label: "Status"
-        name: "status"
-        widget: "select"
-        options:
-          - { label: "Coming Soon", value: "coming_soon" }
-          - { label: "Published", value: "published" }
-          - { label: "Draft", value: "draft" }
-        default: "coming_soon"
+          - label: "Disclaimer"
+            name: "disclaimer"
+            widget: "string"
+          - label: "YouTube channel URL"
+            name: "youtube_channel"
+            widget: "string"
+            hint: "Full channel link, used in the header, footer, and social icon."
+          - label: "Lessons introduction"
+            name: "lessons_intro"
+            widget: "text"
+            hint: "Shown on the Lessons page, above the six original lessons."
+          - label: "Explainers introduction"
+            name: "explainers_intro"
+            widget: "text"
+            hint: "Shown on the Explainers page. Leave the video list empty until you have videos."
+          - label: "AI-assisted label"
+            name: "ai_label"
+            widget: "string"
+            hint: "Shown on every explainer, and on any apologetics piece marked AI-assisted."
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Mission", name: "mission", widget: "text" }
+              - { label: "Disclaimer", name: "disclaimer", widget: "string" }
+          - label: "Lessons"
+            name: "lessons"
+            widget: "list"
+            summary: "{{title}}"
+            hint: "The main lesson series. Paste a YouTube video code to show the video on the site."
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Short unique name, such as introduction-to-prayer" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Prayer", value: "prayer" }
+                  - { label: "Sacraments", value: "sacraments" }
+                  - { label: "Morality", value: "morality" }
+                  - { label: "Doctrine", value: "doctrine" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Duration", name: "duration", widget: "string", required: false, hint: "Optional. Example: 5:58" }
+              - { label: "Level", name: "level", widget: "string", required: false }
+              - label: "YouTube video code"
+                name: "youtube_id"
+                widget: "string"
+                required: false
+                hint: "The 11-character code in the video link, after watch?v= or youtu.be/. Leave blank to show Coming soon."
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Published", value: "published" }
+                  - { label: "Coming soon", value: "coming_soon" }
+                  - { label: "Draft", value: "draft" }
+                default: "published"
+          - label: "Explainers"
+            name: "explainers"
+            widget: "list"
+            summary: "{{title}}"
+            hint: "Short AI-assisted videos, free to watch. Leave this list empty and the Explainers page shows an empty state. Each video is labelled: AI-assisted explainer, reviewed by Tebogo Mokwena."
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Duration", name: "duration", widget: "string", required: false }
+              - label: "YouTube video code"
+                name: "youtube_id"
+                widget: "string"
+                required: false
+                hint: "The 11-character YouTube code. Leave blank to show Coming soon."
+              - label: "AI-assisted"
+                name: "ai_assisted"
+                widget: "boolean"
+                default: true
+                hint: "Explainers are AI-assisted. The public label is always shown on this page."
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Published", value: "published" }
+                  - { label: "Coming soon", value: "coming_soon" }
+                  - { label: "Draft", value: "draft" }
+                default: "published"
+          - label: "Apologetics"
+            name: "apologetics"
+            widget: "object"
+            hint: "A separate page. Edit the introduction here. Add videos or articles when you are ready. An empty list shows an empty state."
+            fields:
+              - { label: "Page title", name: "title", widget: "string" }
+              - label: "Introduction"
+                name: "intro"
+                widget: "text"
+                hint: "Shown at the top of the Apologetics page. Replace this placeholder with your own introduction when you are ready."
+              - label: "Pieces"
+                name: "items"
+                widget: "list"
+                summary: "{{title}}"
+                hint: "Leave empty until you add a video or article."
+                fields:
+                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - label: "Kind"
+                    name: "kind"
+                    widget: "select"
+                    options:
+                      - { label: "Video", value: "video" }
+                      - { label: "Article", value: "article" }
+                    default: "video"
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - label: "Article text"
+                    name: "body"
+                    widget: "text"
+                    required: false
+                    hint: "Used when the kind is Article. Leave blank for videos."
+                  - label: "YouTube video code"
+                    name: "youtube_id"
+                    widget: "string"
+                    required: false
+                    hint: "Used when the kind is Video."
+                  - label: "AI-assisted"
+                    name: "ai_assisted"
+                    widget: "boolean"
+                    default: true
+                    hint: "When on, the piece shows: AI-assisted explainer, reviewed by Tebogo Mokwena."
+                  - label: "Status"
+                    name: "status"
+                    widget: "select"
+                    options:
+                      - { label: "Published", value: "published" }
+                      - { label: "Coming soon", value: "coming_soon" }
+                      - { label: "Draft", value: "draft" }
+                    default: "published"
 
   - name: "pricing"
-    label: "Pricing Plans"
+    label: "Pricing plans"
     editor:
       preview: false
     files:
       - name: "plans"
-        label: "Subscription Plans"
+        label: "Subscription plans"
         file: "content/pricing.json"
         fields:
-          - label: "Monthly Plan"
-            name: "monthly"
-            widget: "object"
+          - label: "Currency"
+            name: "currency"
+            widget: "string"
+            default: "ZAR"
+          - label: "Notice"
+            name: "notice"
+            widget: "text"
+            hint: "Shown above the plans. Keep it clear that payment is not taken yet."
+          - label: "Plans"
+            name: "plans"
+            widget: "list"
+            summary: "{{name}}"
             fields:
-              - { label: "Price", name: "price", widget: "string", default: "$4.99" }
-              - { label: "Period", name: "period", widget: "string", default: "/month" }
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "string", required: false }
               - label: "Features"
                 name: "features"
                 widget: "list"
                 field: { label: "Feature", name: "feature", widget: "string" }
-          - label: "Annual Plan"
-            name: "annual"
-            widget: "object"
-            fields:
-              - { label: "Price", name: "price", widget: "string", default: "$39.99" }
-              - { label: "Period", name: "period", widget: "string", default: "/year" }
-              - { label: "Featured", name: "featured", widget: "boolean", default: true }
-              - label: "Features"
-                name: "features"
+              - label: "Prices"
+                name: "prices"
                 widget: "list"
-                field: { label: "Feature", name: "feature", widget: "string" }
-          - label: "Group Plan"
-            name: "group"
-            widget: "object"
-            fields:
-              - { label: "Price", name: "price", widget: "string", default: "$2.99" }
-              - { label: "Period", name: "period", widget: "string", default: "/user/month" }
-              - label: "Features"
-                name: "features"
-                widget: "list"
-                field: { label: "Feature", name: "feature", widget: "string" }
-
-  - name: "pages"
-    label: "Pages"
-    files:
-      - name: "about"
-        label: "About Page"
-        file: "content/about.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string", default: "About Catechism for Africa" }
-          - { label: "Subtitle", name: "subtitle", widget: "string", default: "Equipping the Church in Africa with world-class catechetical resources" }
-          - label: "Mission"
-            name: "mission"
-            widget: "markdown"
-          - label: "Story"
-            name: "story"
-            widget: "markdown"
-          - label: "Approach"
-            name: "approach"
-            widget: "markdown"
+                summary: "{{amount}} {{period}}"
+                fields:
+                  - { label: "ID", name: "id", widget: "string", hint: "Used by the interest form. Example: individual-monthly" }
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Amount", name: "amount", widget: "string", hint: "Example: R49" }
+                  - { label: "Period", name: "period", widget: "string", required: false, hint: "Example: /month" }

@@ -1,20 +1,471 @@
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catechism for Africa | Traditional Catholic Formation for Africa</title>
+    <meta name="description" content="Traditional Catholic Formation for Africa. Original lessons for catechumens and candidates, by Tebogo Mokwena. A personal apostolate, not an official diocesan or parish resource.">
+    <meta name="theme-color" content="#1e3a5f">
+    <link rel="icon" href="/assets/images/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/images/logo.png">
     <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", function(user) {
-                if (!user) {
-                    window.netlifyIdentity.on("login", function() {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-            
-            // Handle confirmation tokens on main page
-            if (window.location.hash && window.location.hash.includes('confirmation_token')) {
-                window.location.href = '/admin/' + window.location.hash;
+        (function () {
+            var hash = window.location.hash || "";
+            if (/(invite_token|confirmation_token|recovery_token|email_change_token)=/.test(hash)) {
+                window.location.replace("/admin/" + hash);
+                return;
             }
-            if (window.location.hash && window.location.hash.includes('recovery_token')) {
-                window.location.href = '/admin/' + window.location.hash;
-            }
-        }
+            var script = document.createElement("script");
+            script.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+            script.onload = function () {
+                if (!window.netlifyIdentity) return;
+                window.netlifyIdentity.on("init", function (user) {
+                    if (!user) {
+                        window.netlifyIdentity.on("login", function () {
+                            document.location.href = "/admin/";
+                        });
+                    }
+                });
+            };
+            document.head.appendChild(script);
+        })();
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" data-page="home">
+                <img src="/assets/images/logo.svg" alt="" width="42" height="42">
+                <div class="logo-text">Catechism <span>for Africa</span></div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" class="active" data-page="home">Home</a></li>
+                <li><a href="/content" data-page="content">Lessons</a></li>
+                <li><a href="/explainers" data-page="explainers">Explainers</a></li>
+                <li><a href="/apologetics" data-page="apologetics">Apologetics</a></li>
+                <li><a href="/about" data-page="about">About</a></li>
+                <li><a href="/licensing" data-page="licensing">Licensing</a></li>
+                <li><a href="/subscribe" data-page="subscribe">Sign Up</a></li>
+                <li><a class="nav-youtube" data-channel href="https://www.youtube.com/@CatechismForAfrica" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <i class="fas fa-check" aria-hidden="true"></i>
+        <span id="toastMessage">Message sent.</span>
+    </div>
+
+    <main id="main">
+        <div class="page active" id="home">
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-earth-africa" aria-hidden="true"></i> <span data-bind="tagline">Traditional Catholic Formation for Africa</span></div>
+                    <h1 id="heroTitle">Traditional Catholic Formation <em>for Africa</em></h1>
+                    <p data-bind="hero_subtitle">Faithful catechesis for catechumens, candidates, and the parishes that prepare them.</p>
+                    <div class="hero-buttons">
+                        <a href="/content" class="btn btn-primary" data-page="content"><i class="fas fa-play" aria-hidden="true"></i> Watch the lessons</a>
+                        <a href="/subscribe" class="btn btn-outline" data-page="subscribe"><i class="fas fa-envelope" aria-hidden="true"></i> Register interest</a>
+                    </div>
+                    <p class="hero-disclaimer" data-bind="disclaimer">A personal apostolate. Not an official diocesan or parish resource.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Who it is for</h2>
+                    <p>Catechumens and candidates come first, then the people who prepare them, then Catholics refreshing their faith.</p>
+                </div>
+                <div class="user-types">
+                    <article class="user-card primary-audience">
+                        <p class="audience-rank">Primary</p>
+                        <div class="user-card-icon"><i class="fas fa-user" aria-hidden="true"></i></div>
+                        <h3>Catechumens and candidates</h3>
+                        <p>For adults preparing to enter the Catholic Church. The free tier is lessons, transcripts, and an FAQ.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Six original lessons can be watched now</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Transcripts are still to be added</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> An FAQ is still to be added</li>
+                        </ul>
+                        <a href="/content" class="btn btn-dark" data-page="content" style="width:100%;justify-content:center;">Watch the lessons</a>
+                    </article>
+                    <article class="user-card">
+                        <p class="audience-rank">Secondary</p>
+                        <div class="user-card-icon"><i class="fas fa-church" aria-hidden="true"></i></div>
+                        <h3>RCIA coordinators and catechists</h3>
+                        <p>For people leading a parish RCIA programme. A parish licence covers unlimited team use in that parish’s programme.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> R299 a month or R2,499 a year, per parish</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Training modules are part of the paid plans and are still to be added</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Payments are not open yet</li>
+                        </ul>
+                        <a href="/licensing" class="btn btn-dark" data-page="licensing" style="width:100%;justify-content:center;">Licensing enquiry</a>
+                    </article>
+                    <article class="user-card">
+                        <p class="audience-rank">Tertiary</p>
+                        <div class="user-card-icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+                        <h3>Lifelong Catholics</h3>
+                        <p>For Catholics who want to refresh their faith. The lessons are public. Individual Pro adds further tools when they are ready.</p>
+                        <ul>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Same six original lessons</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Downloads, quizzes and tests, certificate templates, training modules</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> R49 a month or R499 a year</li>
+                        </ul>
+                        <a href="/subscribe" class="btn btn-dark" data-page="subscribe" style="width:100%;justify-content:center;">See the plans</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section" style="padding-top:0;">
+                <div class="section-header">
+                    <h2>Three separate places</h2>
+                    <p>Original lessons stay apart from AI-assisted explainers and from apologetics.</p>
+                </div>
+                <div class="user-types">
+                    <article class="user-card">
+                        <p class="audience-rank">Original lessons</p>
+                        <h3>Whiteboard lessons</h3>
+                        <p>Six lessons by Catechism for Africa, already on YouTube. Each one is marked Original lesson.</p>
+                        <a href="/content" class="btn btn-dark" data-page="content">Open lessons</a>
+                    </article>
+                    <article class="user-card">
+                        <p class="audience-rank">Free to watch</p>
+                        <h3>Explainers</h3>
+                        <p>A separate page for short AI-assisted videos. None have been added yet. Each one will be marked: AI-assisted explainer, reviewed by Tebogo Mokwena.</p>
+                        <a href="/explainers" class="btn btn-white" data-page="explainers">Open explainers</a>
+                    </article>
+                    <article class="user-card">
+                        <p class="audience-rank">Added later</p>
+                        <h3>Apologetics</h3>
+                        <p>A separate page for apologetics videos and articles, including on African Traditional Religion and syncretism with Christianity. Nothing has been added yet.</p>
+                        <a href="/apologetics" class="btn btn-white" data-page="apologetics">Open apologetics</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="facts-bar" aria-label="What is true of this site today">
+                <div class="facts-grid">
+                    <p><strong>6 original lessons</strong> are on the Catechism for Africa YouTube channel and can be watched here.</p>
+                    <p><strong>Free for catechumens and candidates.</strong> Transcripts and an FAQ are part of that tier and are not posted yet.</p>
+                    <p><strong>Prices are in rand.</strong> PayFast is planned. The sign-up form does not take payment.</p>
+                </div>
+            </section>
+
+            <section class="section" style="text-align:center;">
+                <h2 style="font-size:36px;color:var(--primary);margin-bottom:16px;">Watch, or register interest</h2>
+                <p style="color:var(--text-light);font-size:18px;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;">The lessons are public. Paid plans can be reserved by the interest form until payments open.</p>
+                <div class="hero-buttons">
+                    <a href="/content" class="btn btn-primary" data-page="content">Watch the lessons</a>
+                    <a href="/licensing" class="btn btn-white" data-page="licensing">Parish licensing</a>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" id="content">
+            <section class="about-hero">
+                <h1>Original lessons</h1>
+                <p data-bind="lessons_intro">Six original whiteboard lessons, published on YouTube. These are separate from the AI-assisted explainers.</p>
+                <p style="margin-top:16px;"><a data-channel href="https://www.youtube.com/@CatechismForAfrica" target="_blank" rel="noopener noreferrer">Watch the YouTube channel</a></p>
+            </section>
+            <section class="section">
+                <div class="content-filters" id="lessonFilters">
+                    <button type="button" class="filter-btn active" data-filter="all">All lessons</button>
+                    <button type="button" class="filter-btn" data-filter="prayer">Prayer</button>
+                    <button type="button" class="filter-btn" data-filter="sacraments">Sacraments</button>
+                    <button type="button" class="filter-btn" data-filter="morality">Morality</button>
+                    <button type="button" class="filter-btn" data-filter="doctrine">Doctrine</button>
+                </div>
+                <div class="videos-grid" id="videosGrid">
+                    <article class="video-card" data-category="prayer">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/izjju472kGc?rel=0" title="An Introduction to Prayer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Prayer</span><h3>An Introduction to Prayer</h3><p>Whiteboard catechism lesson.</p></div>
+                    </article>
+                    <article class="video-card" data-category="prayer">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/0Bu9E-tclxU?rel=0" title="Revelation of Prayer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Prayer</span><h3>Revelation of Prayer</h3><p>Whiteboard catechism lesson.</p></div>
+                    </article>
+                    <article class="video-card" data-category="prayer">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/RLlIMZc9U5E?rel=0" title="A Catechism on Mary and Prayer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Prayer</span><h3>A Catechism on Mary and Prayer</h3><p>Whiteboard catechism lesson.</p></div>
+                    </article>
+                    <article class="video-card" data-category="sacraments">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/BBIwZYLhTko?rel=0" title="The Seven Sacraments" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Sacraments</span><h3>The Seven Sacraments</h3><p>Whiteboard catechism lesson.</p></div>
+                    </article>
+                    <article class="video-card" data-category="morality">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/LIAtXBuB8Ag?rel=0" title="The Church on Morality and Human Freedom" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Morality</span><h3>The Church on Morality and Human Freedom</h3><p>A whiteboard catechism lesson exploring the Church's teaching on morality and the nature of human freedom.</p><div class="video-meta"><span><i class="fas fa-clock" aria-hidden="true"></i> 5:58</span><span>All Levels</span></div></div>
+                    </article>
+                    <article class="video-card" data-category="doctrine">
+                        <div class="video-wrapper"><iframe data-src="https://www.youtube-nocookie.com/embed/dnWXPe66ba4?rel=0" title="The Trinity" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+                        <div class="video-info"><span class="origin-label">Original lesson</span><span class="video-tag">Doctrine</span><h3>The Trinity</h3><p>Whiteboard catechism lesson.</p></div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <div class="page" id="explainers">
+            <section class="about-hero">
+                <h1>Explainers</h1>
+                <p data-bind="explainers_intro">Short videos, free to watch, will be listed on this page.</p>
+                <p style="margin-top:12px;">Separate from the six original lessons.</p>
+            </section>
+            <section class="section">
+                <div class="page-label">
+                    <p class="label-caption">Every video on this page is marked:</p>
+                    <p class="ai-label" data-ai-label>AI-assisted explainer, reviewed by Tebogo Mokwena</p>
+                </div>
+                <p class="empty-state" id="explainersEmpty">No explainer videos have been added yet. When one is published, it will appear here, free to watch, with the label above on the card.</p>
+                <div class="videos-grid" id="explainersGrid" hidden></div>
+            </section>
+        </div>
+
+        <div class="page" id="apologetics">
+            <section class="about-hero">
+                <h1 data-bind="apologetics_title">Apologetics</h1>
+                <p data-bind="apologetics_intro">Videos and articles will be added here, including on African Traditional Religion and syncretism with Christianity.</p>
+            </section>
+            <section class="section">
+                <div id="apologeticsEmpty">
+                    <p class="empty-state">No apologetics videos or articles have been added yet. This introduction can be edited in the content manager.</p>
+                    <p class="label-caption" style="margin-top:28px;">An AI-assisted piece on this page uses this label:</p>
+                    <p class="ai-label page-label" data-ai-label>AI-assisted explainer, reviewed by Tebogo Mokwena</p>
+                </div>
+                <div class="piece-list" id="apologeticsList" hidden></div>
+            </section>
+        </div>
+
+        <div class="page" id="about">
+            <section class="about-hero">
+                <h1 data-bind="about_heading">About Catechism for Africa</h1>
+                <p data-bind="tagline">Traditional Catholic Formation for Africa</p>
+            </section>
+            <div class="about-content">
+                <h3 data-bind="about_name">Tebogo Mokwena</h3>
+                <p data-bind="about_role">RCIA Coordinator in the Vaal Diocese since 2024</p>
+                <h3>Mission</h3>
+                <p data-bind="about_mission">To give under-resourced South African and African parishes access to faithful catechesis rooted in the Catechism of the Catholic Church, Sacred Scripture, the Magisterium and Sacred Tradition.</p>
+                <p class="disclaimer-card" data-bind="about_disclaimer">A personal apostolate. Not an official diocesan or parish resource.</p>
+                <h3>Who it is for</h3>
+                <p>Catechumens and candidates first. RCIA coordinators and catechists second. Lifelong Catholics who want to refresh their faith third.</p>
+                <h3>What is here now</h3>
+                <p>Six original whiteboard lessons are on the <a data-channel href="https://www.youtube.com/@CatechismForAfrica" target="_blank" rel="noopener noreferrer">Catechism for Africa YouTube channel</a> and on the Lessons page. Explainers and apologetics are separate pages, ready for material to be added. Prices are in South African rand. Payments are not open yet. PayFast is planned.</p>
+            </div>
+        </div>
+
+        <div class="page" id="licensing">
+            <div class="form-page">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Licensing enquiry</h2>
+                        <p>For a parish or diocese that wants the Parish / Coordinator licence: R299 a month or R2,499 a year per parish, for unlimited team use in that parish’s RCIA programme.</p>
+                    </div>
+                    <div class="form-card">
+                        <p class="notice">This form sends an enquiry only. It does not take payment.</p>
+                        <form name="licensing" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-success="Thank you. Your licensing enquiry has been sent.">
+                            <input type="hidden" name="form-name" value="licensing">
+                            <p class="hp"><label>Leave this empty <input name="bot-field" autocomplete="off"></label></p>
+                            <p class="form-success" hidden>Thank you. Your licensing enquiry has been sent.</p>
+                            <div class="form-row">
+                                <div class="form-group"><label for="lic-first">First name <span>*</span></label><input id="lic-first" name="first_name" autocomplete="given-name" required></div>
+                                <div class="form-group"><label for="lic-last">Last name <span>*</span></label><input id="lic-last" name="last_name" autocomplete="family-name" required></div>
+                            </div>
+                            <div class="form-group"><label for="lic-email">Email <span>*</span></label><input id="lic-email" type="email" name="email" autocomplete="email" required></div>
+                            <div class="form-group"><label for="lic-phone">Phone</label><input id="lic-phone" type="tel" name="phone" autocomplete="tel" placeholder="+27"></div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="lic-type">Institution <span>*</span></label>
+                                    <select id="lic-type" name="institution_type" required>
+                                        <option value="">Select...</option>
+                                        <option>Parish</option>
+                                        <option>Diocese</option>
+                                        <option>Religious community</option>
+                                        <option>Catholic school</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label for="lic-org">Institution name <span>*</span></label><input id="lic-org" name="institution_name" required></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="lic-country">Country <span>*</span></label>
+                                    <select id="lic-country" name="country" required>
+                                        <option value="">Select a country...</option>
+                                        <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>Côte d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>São Tomé and Príncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option><option>Zimbabwe</option><option>Outside Africa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group"><label for="lic-city">City or town</label><input id="lic-city" name="city"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lic-role">Your role</label>
+                                <select id="lic-role" name="role">
+                                    <option value="">Select...</option>
+                                    <option>RCIA coordinator</option>
+                                    <option>Catechist</option>
+                                    <option>Parish priest</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="lic-message">Message</label><textarea id="lic-message" name="message"></textarea></div>
+                            <button type="submit" class="btn btn-primary form-submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="subscribe">
+            <div class="form-page">
+                <div class="form-container wide">
+                    <div class="form-header">
+                        <h2>Subscription signup</h2>
+                        <p>Choose a plan and register your interest. Payments are not open yet.</p>
+                    </div>
+                    <p class="notice" id="pricingNotice">Payments are not open yet. PayFast is planned. Choosing a plan registers your interest only and does not take payment.</p>
+                    <div class="pricing-grid" id="pricingGrid">
+                        <article class="pricing-card">
+                            <h3>Free</h3>
+                            <div class="price">R0</div>
+                            <p class="plan-for">For catechumens and candidates.</p>
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Lessons</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Transcripts</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> FAQ</li>
+                            </ul>
+                            <div class="plan-actions"><button type="button" class="btn btn-dark" data-plan="Free">Register interest — Free</button></div>
+                        </article>
+                        <article class="pricing-card">
+                            <h3>Individual Pro</h3>
+                            <div class="price">R49<span>/month</span></div>
+                            <div class="price price-alt">R499<span>/year</span></div>
+                            <p class="plan-for">For one person.</p>
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Downloads</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Quizzes and tests</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Certificate templates</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Training modules</li>
+                            </ul>
+                            <div class="plan-actions">
+                                <button type="button" class="btn btn-primary" data-plan="Individual Pro — R49/month">Register interest · R49/month</button>
+                                <button type="button" class="btn btn-dark" data-plan="Individual Pro — R499/year">Register interest · R499/year</button>
+                            </div>
+                        </article>
+                        <article class="pricing-card">
+                            <h3>Parish / Coordinator</h3>
+                            <div class="price">R299<span>/month</span></div>
+                            <div class="price price-alt">R2,499<span>/year</span></div>
+                            <p class="plan-for">Priced per parish, for that parish's RCIA programme.</p>
+                            <ul>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Unlimited team use within that parish's RCIA programme</li>
+                            </ul>
+                            <div class="plan-actions">
+                                <button type="button" class="btn btn-dark" data-plan="Parish / Coordinator — R299/month">Register interest · R299/month</button>
+                                <button type="button" class="btn btn-dark" data-plan="Parish / Coordinator — R2,499/year">Register interest · R2,499/year</button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="form-card signup-form-wrap" id="signupForm">
+                        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--primary);margin-bottom:12px;text-align:center;">Register your interest</h3>
+                        <p class="notice">This is not a payment. PayFast checkout is planned and is not switched on. We will be in touch when it is.</p>
+                        <form name="subscription-interest" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-success="Thank you. Your interest is registered. This does not take payment.">
+                            <input type="hidden" name="form-name" value="subscription-interest">
+                            <p class="hp"><label>Leave this empty <input name="bot-field" autocomplete="off"></label></p>
+                            <p class="form-success" hidden>Thank you. Your interest is registered. This does not take payment.</p>
+                            <div class="form-row">
+                                <div class="form-group"><label for="sub-first">First name <span>*</span></label><input id="sub-first" name="first_name" autocomplete="given-name" required></div>
+                                <div class="form-group"><label for="sub-last">Last name <span>*</span></label><input id="sub-last" name="last_name" autocomplete="family-name" required></div>
+                            </div>
+                            <div class="form-group"><label for="sub-email">Email <span>*</span></label><input id="sub-email" type="email" name="email" autocomplete="email" required></div>
+                            <div class="form-group">
+                                <label for="sub-country">Country <span>*</span></label>
+                                <select id="sub-country" name="country" required>
+                                    <option value="">Select a country...</option>
+                                    <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>Côte d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>São Tomé and Príncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option><option>Zimbabwe</option><option>Outside Africa</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sub-who">I am</label>
+                                <select id="sub-who" name="audience">
+                                    <option value="">Select...</option>
+                                    <option>A catechumen or candidate</option>
+                                    <option>An RCIA coordinator or catechist</option>
+                                    <option>A Catholic refreshing my faith</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="sub-parish">Parish or diocese</label><input id="sub-parish" name="parish"></div>
+                            <div class="form-group">
+                                <label for="planSelect">Plan <span>*</span></label>
+                                <select id="planSelect" name="plan" required>
+                                    <option value="">Select a plan...</option>
+                                    <option>Free</option>
+                                    <option>Individual Pro — R49/month</option>
+                                    <option>Individual Pro — R499/year</option>
+                                    <option>Parish / Coordinator — R299/month</option>
+                                    <option>Parish / Coordinator — R2,499/year</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="sub-note">Note</label><textarea id="sub-note" name="note"></textarea></div>
+                            <label class="form-check"><input type="checkbox" name="understands_no_payment" value="yes" required><span>I understand that payments are not open yet and this form does not take payment.</span></label>
+                            <button type="submit" class="btn btn-primary form-submit"><i class="fas fa-envelope" aria-hidden="true"></i> Register interest</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo" data-page="home">
+                    <img src="/assets/images/logo.svg" alt="" width="42" height="42">
+                    <div class="logo-text" style="color:#fff;">Catechism <span>for Africa</span></div>
+                </a>
+                <p>Traditional Catholic Formation for Africa. A personal apostolate of Tebogo Mokwena, RCIA Coordinator in the Vaal Diocese since 2024.</p>
+                <p class="footer-channel-note" data-bind="disclaimer">A personal apostolate. Not an official diocesan or parish resource.</p>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <ul class="footer-links">
+                    <li><a href="/content" data-page="content">Original lessons</a></li>
+                    <li><a href="/explainers" data-page="explainers">Explainers</a></li>
+                    <li><a href="/apologetics" data-page="apologetics">Apologetics</a></li>
+                    <li><a href="/about" data-page="about">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Plans</h4>
+                <ul class="footer-links">
+                    <li><a href="/subscribe" data-page="subscribe">Free, Pro, and parish plans</a></li>
+                    <li><a href="/licensing" data-page="licensing">Licensing enquiry</a></li>
+                    <li><a href="/admin/" id="editorLogin">Content editor sign-in</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>YouTube</h4>
+                <div class="footer-social">
+                    <a data-channel href="https://www.youtube.com/@CatechismForAfrica" target="_blank" rel="noopener noreferrer" aria-label="Catechism for Africa on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                </div>
+                <p class="footer-channel-note"><a data-channel href="https://www.youtube.com/@CatechismForAfrica" target="_blank" rel="noopener noreferrer">youtube.com/@CatechismForAfrica</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Catechism for Africa. Tebogo Mokwena.</p>
+            <p>A personal apostolate. Not an official diocesan or parish resource.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "currency": "ZAR",
+  "notice": "Payments are not open yet. PayFast is planned. Choosing a plan registers your interest only and does not take payment.",
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "summary": "For catechumens and candidates.",
+      "features": [
+        "Lessons",
+        "Transcripts",
+        "FAQ"
+      ],
+      "prices": [
+        {
+          "id": "free",
+          "label": "Free",
+          "amount": "R0",
+          "period": ""
+        }
+      ]
+    },
+    {
+      "id": "individual",
+      "name": "Individual Pro",
+      "summary": "For one person.",
+      "features": [
+        "Downloads",
+        "Quizzes and tests",
+        "Certificate templates",
+        "Training modules"
+      ],
+      "prices": [
+        {
+          "id": "individual-monthly",
+          "label": "Monthly",
+          "amount": "R49",
+          "period": "/month"
+        },
+        {
+          "id": "individual-annual",
+          "label": "Annual",
+          "amount": "R499",
+          "period": "/year"
+        }
+      ]
+    },
+    {
+      "id": "parish",
+      "name": "Parish / Coordinator",
+      "summary": "Priced per parish, for that parish's RCIA programme.",
+      "features": [
+        "Unlimited team use within that parish's RCIA programme"
+      ],
+      "prices": [
+        {
+          "id": "parish-monthly",
+          "label": "Monthly",
+          "amount": "R299",
+          "period": "/month"
+        },
+        {
+          "id": "parish-annual",
+          "label": "Annual",
+          "amount": "R2,499",
+          "period": "/year"
+        }
+      ]
+    }
+  ]
+}

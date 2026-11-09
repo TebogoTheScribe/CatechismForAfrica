@@ -45,6 +45,27 @@
   to = "/"
   status = 200
 
+# Curriculum index is a section of the home page, like the other routes.
+# /curriculum/session-3/ is a real file and must not be rewritten here.
+[[redirects]]
+  from = "/curriculum/session-3"
+  to = "/curriculum/session-3/"
+  status = 301
+
+# force: the session files live under /curriculum/, so the directory must not
+# shadow this rewrite. Exact paths only; /curriculum/session-3/ is a real page.
+[[redirects]]
+  from = "/curriculum"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/curriculum/"
+  to = "/"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/apologetics"
   to = "/"

@@ -148,8 +148,16 @@
         var poster = trim(config.poster);
         var title = trim(config.title) || "Session video";
         var current = 0;
+        var several = versions.length > 1;
+
+        if (!several) {
+            tabs.hidden = true;
+            stage.removeAttribute("role");
+            stage.removeAttribute("aria-labelledby");
+        }
 
         versions.forEach(function (version, index) {
+            if (!several) return;
             var button = document.createElement("button");
             button.type = "button";
             button.className = "version-tab";
@@ -173,35 +181,42 @@
             current = index;
             var version = versions[index];
             var tabButtons = buttons();
-            Array.prototype.forEach.call(tabButtons, function (button, buttonIndex) {
-                var selected = buttonIndex === index;
-                button.setAttribute("aria-selected", selected ? "true" : "false");
-                button.tabIndex = selected ? 0 : -1;
-            });
-            stage.setAttribute("aria-labelledby", tabButtons[index].id);
-            if (note) note.textContent = version.note || "";
+            if (several) {
+                Array.prototype.forEach.call(tabButtons, function (button, buttonIndex) {
+                    var selected = buttonIndex === index;
+                    button.setAttribute("aria-selected", selected ? "true" : "false");
+                    button.tabIndex = selected ? 0 : -1;
+                });
+                if (tabButtons[index]) stage.setAttribute("aria-labelledby", tabButtons[index].id);
+            }
+            if (note) {
+                note.textContent = version.note || "";
+                note.hidden = !version.note;
+            }
             clear(stage);
             if (version.youtubeId) {
                 mountYouTube(stage, version, title);
             } else if (version.file) {
                 mountFile(stage, version, poster, title);
             } else {
-                stage.appendChild(fallback("This version is not linked yet. Add a youtubeId or a file path in the session media config."));
+                stage.appendChild(fallback("This video is not linked yet. Add a youtubeId or a file path in the session media config."));
             }
         }
 
-        tabs.addEventListener("keydown", function (event) {
-            if (event.key !== "ArrowRight" && event.key !== "ArrowLeft" && event.key !== "Home" && event.key !== "End") return;
-            event.preventDefault();
-            var next = current;
-            if (event.key === "ArrowRight") next = (current + 1) % versions.length;
-            if (event.key === "ArrowLeft") next = (current - 1 + versions.length) % versions.length;
-            if (event.key === "Home") next = 0;
-            if (event.key === "End") next = versions.length - 1;
-            select(next);
-            var tabButtons = buttons();
-            if (tabButtons[next]) tabButtons[next].focus();
-        });
+        if (several) {
+            tabs.addEventListener("keydown", function (event) {
+                if (event.key !== "ArrowRight" && event.key !== "ArrowLeft" && event.key !== "Home" && event.key !== "End") return;
+                event.preventDefault();
+                var next = current;
+                if (event.key === "ArrowRight") next = (current + 1) % versions.length;
+                if (event.key === "ArrowLeft") next = (current - 1 + versions.length) % versions.length;
+                if (event.key === "Home") next = 0;
+                if (event.key === "End") next = versions.length - 1;
+                select(next);
+                var tabButtons = buttons();
+                if (tabButtons[next]) tabButtons[next].focus();
+            });
+        }
 
         select(0);
     }

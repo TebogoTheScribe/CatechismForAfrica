@@ -46,10 +46,10 @@
   status = 200
 
 # Curriculum index is a section of the home page, like the other routes.
-# /curriculum/session-3/ is a real file and must not be rewritten here.
+# Each /curriculum/session-N/ page is a real file and must not be rewritten here.
 [[redirects]]
-  from = "/curriculum/session-3"
-  to = "/curriculum/session-3/"
+  from = "/curriculum/session-:num"
+  to = "/curriculum/session-:num/"
   status = 301
 
 # force: the session files live under /curriculum/, so the directory must not

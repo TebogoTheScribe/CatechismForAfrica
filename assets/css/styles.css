@@ -1277,6 +1277,7 @@ a.curriculum-row:hover {
     grid-area: meta;
     color: var(--text-light);
     font-size: 14px;
+    overflow-wrap: anywhere;
 }
 
 .curriculum-list li.is-ready .curriculum-meta {
@@ -1324,6 +1325,51 @@ a.curriculum-row:hover {
     font-size: 18px;
     margin: 0 auto 8px;
     opacity: 0.92;
+    max-width: 40em;
+    overflow-wrap: anywhere;
+}
+
+.session-pager {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 8px 0 40px;
+}
+
+.session-pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 44px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--white);
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.session-pager a:hover { border-color: var(--primary); }
+
+.session-pager-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--primary);
+}
+
+.session-slides-soon { margin-top: 8px; }
+
+@media (min-width: 700px) {
+    .session-pager { grid-template-columns: 1fr 1fr; }
+    .session-pager a.is-next { grid-column: 2; text-align: right; }
 }
 
 .session-hero .session-back {

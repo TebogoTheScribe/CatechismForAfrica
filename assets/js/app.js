@@ -1,6 +1,7 @@
 var ROUTES = {
     home: "/",
     content: "/content",
+    curriculum: "/curriculum",
     explainers: "/explainers",
     apologetics: "/apologetics",
     about: "/about",

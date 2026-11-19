@@ -1872,3 +1872,12 @@ a.curriculum-row:hover {
 .review-footnote { max-width: 1200px; margin: 14px auto 0; font-size: 11px; line-height: 1.4; color: rgba(255,255,255,0.45); text-align: center; }
 .review-footnote.curriculum-only { display: none; }
 body:has(#curriculum.active) .review-footnote.curriculum-only { display: block; }
+
+/* Portrait (9:16) session video: centred, capped height on desktop, full width on phone */
+.session-player--portrait {
+    max-width: min(100%, calc(78vh * 9 / 16 + 26px));
+    margin-left: auto;
+    margin-right: auto;
+}
+.session-player--portrait .session-stage { padding-bottom: 177.78%; }
+.session-player--portrait .session-poster-btn img { object-fit: cover; }

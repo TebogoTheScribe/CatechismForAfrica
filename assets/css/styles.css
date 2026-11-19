@@ -1223,10 +1223,10 @@ html { scroll-behavior: smooth; }
 
 .curriculum-row {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
     width: 100%;
-    min-height: 116px;
+    min-height: 0;
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -1730,3 +1730,154 @@ a.curriculum-row:hover {
     .nav-container { padding: 0 16px; }
     .hero h1 { font-size: 32px; }
 }
+
+
+/* CURRICULUM: review note, references, readings and quiz pages */
+.review-note {
+    display: inline-block;
+    margin: 12px auto 10px;
+    padding: 6px 14px;
+    border: 1px solid rgba(201, 162, 39, 0.7);
+    border-radius: 12px;
+    background: rgba(201, 162, 39, 0.16);
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 40em;
+}
+
+.about-hero .review-note,
+.session-hero .review-note { color: inherit; font-size: 14px; line-height: 1.5; border-radius: 12px; margin: 12px auto 10px; opacity: 1; }
+
+.session-question { font-style: normal; }
+
+.ref-line { font-weight: 600; overflow-wrap: anywhere; }
+
+.ref-sub { margin-bottom: 6px !important; color: var(--text-light) !important; font-size: 15px !important; }
+
+.ref-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 0;
+}
+
+.ref-links a {
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.ref-links a:hover { border-color: var(--primary); }
+
+.ref-list {
+    list-style: disc;
+    padding-left: 1.25em;
+    margin: 0 0 8px;
+}
+
+.ref-list li { margin: 8px 0; font-size: 16px; line-height: 1.55; }
+
+.ref-note { font-size: 15px !important; color: var(--text-light) !important; }
+
+.readings-cta { margin-top: 28px; }
+
+.readings-cta a { font-weight: 700; }
+
+.session-licensing { font-size: 15px !important; color: var(--text-light) !important; }
+
+.quiz-wrap { padding-bottom: 48px; }
+
+.quiz-actions { margin: 24px 0 0; }
+
+.session-copy h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--primary);
+    margin: 22px 0 8px;
+}
+
+.table-scroll { overflow-x: auto; margin: 0 0 14px; }
+
+.readings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+    background: var(--white);
+}
+
+.readings-table th,
+.readings-table td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.readings-table th { background: rgba(30, 58, 95, 0.06); color: var(--primary); }
+
+.quiz-name { display: flex; gap: 8px; align-items: flex-end; }
+
+.quiz-name-line { flex: 1; max-width: 360px; border-bottom: 1px solid var(--text); height: 1.2em; }
+
+.quiz-list { padding-left: 1.6em; margin: 12px 0 0; }
+
+.quiz-q { margin: 0 0 22px; font-size: 17px; line-height: 1.6; }
+
+.quiz-stem { margin-bottom: 8px !important; }
+
+.quiz-type {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-right: 6px;
+}
+
+.quiz-options { list-style: none; padding: 0; margin: 0 0 0 4px; }
+
+.quiz-options li { margin: 6px 0; }
+
+.quiz-letter { display: inline-block; min-width: 1.6em; font-weight: 700; }
+
+.quiz-lines span { display: block; height: 30px; border-bottom: 1px solid #a0aec0; }
+
+.quiz-footnote { color: var(--text-light) !important; font-size: 15px !important; margin-top: 24px; }
+
+@media print {
+    @page { margin: 16mm 14mm; }
+    body { background: #fff !important; color: #000; font-size: 11.5pt; }
+    .navbar, .footer, .skip-link, .no-print, .session-pager, .session-block, .readings-cta, .session-licensing, .ref-links, .ref-sub { display: none !important; }
+    .session-main { padding-top: 0 !important; }
+    .about-hero, .session-hero { background: none !important; color: #000 !important; padding: 0 0 6pt !important; text-align: left; }
+    .session-hero h1 { font-size: 22pt !important; color: #000 !important; }
+    .session-hero .session-kicker { color: #000 !important; }
+    .review-note { border: 1px solid #000; border-radius: 3pt; background: none; padding: 2pt 6pt; margin: 4pt 0; font-size: 9.5pt; }
+    .session-wrap { width: 100% !important; padding: 0 !important; }
+    .session-copy { padding-bottom: 0 !important; }
+    .session-copy h2 { font-size: 16pt !important; margin-top: 12pt !important; color: #000 !important; }
+    .session-copy h3 { font-size: 13pt; margin-top: 8pt; color: #000; }
+    .session-copy p, .ref-list li, .quiz-q { font-size: 11.5pt !important; line-height: 1.45 !important; color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+    .readings-table { font-size: 10pt; }
+    .readings-table th { background: #eee !important; }
+    .table-scroll { overflow: visible; }
+    .quiz-section { break-before: page; page-break-before: always; }
+    .quiz-q { break-inside: avoid; page-break-inside: avoid; margin-bottom: 12pt; }
+    .quiz-lines span { height: 22pt; border-bottom: 1px solid #000; }
+    .quiz-name-line { border-bottom: 1px solid #000; }
+}
+
+.quiz-readings p,
+.quiz-readings a,
+.readings-table td { overflow-wrap: anywhere; }

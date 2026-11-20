@@ -19,7 +19,6 @@ var CATEGORIES = {
 };
 
 var ORIGINAL_LABEL = "Original lesson";
-var AI_LABEL_DEFAULT = "AI-assisted explainer, reviewed by Tebogo Mokwena";
 var BLOCKED_IDS = { dQw4w9WgXcQ: true };
 
 function escapeHtml(value) {
@@ -161,7 +160,6 @@ function lessonCard(item) {
 function explainerCard(item, label) {
     var description = String(item.description || "").trim();
     return '<article class="video-card">' +
-        '<p class="ai-label">' + escapeHtml(label) + "</p>" +
         mediaHtml(item) +
         '<div class="video-info"><span class="video-tag">Explainer</span><h3>' + escapeHtml(item.title) + "</h3>" +
         (description ? "<p>" + escapeHtml(description) + "</p>" : "") +
@@ -171,7 +169,7 @@ function explainerCard(item, label) {
 function apologeticsCard(item, label) {
     var description = String(item.description || "").trim();
     var kind = String(item.kind || "video").trim() === "article" ? "article" : "video";
-    var ai = item.ai_assisted === true ? '<p class="ai-label">' + escapeHtml(label) + "</p>" : "";
+    var ai = "";
     var body = "";
     if (kind === "article") {
         var text = String(item.body || "").trim();
@@ -316,13 +314,9 @@ function applyContent(content) {
         setBind("apologetics_intro", content.apologetics.intro);
     }
     setChannel(content.youtube_channel);
-    var label = String(content.ai_label || "").trim() || AI_LABEL_DEFAULT;
-    document.querySelectorAll("[data-ai-label]").forEach(function (el) {
-        el.textContent = label;
-    });
     if (Array.isArray(content.lessons)) renderLessons(content.lessons);
-    renderExplainers(content.explainers || [], label);
-    renderApologetics((content.apologetics && content.apologetics.items) || [], label);
+    renderExplainers(content.explainers || [], "");
+    renderApologetics((content.apologetics && content.apologetics.items) || [], "");
     activateEmbeds(pageFromPath(location.pathname));
 }
 

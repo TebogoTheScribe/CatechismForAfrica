@@ -35,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/explainers.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -49,7 +50,7 @@
                 <li><a href="/" class="active" data-page="home">Home</a></li>
                 <li><a href="/content" data-page="content">Lessons</a></li>
                 <li><a href="/curriculum" data-page="curriculum">Curriculum</a></li>
-                <!-- hidden until added later (nav): <li><a href="/explainers" data-page="explainers">Explainers</a></li> -->
+                <li><a href="/explainers/">Explainers</a></li>
                 <!-- hidden until added later (nav): <li><a href="/apologetics" data-page="apologetics">Apologetics</a></li> -->
                 <li><a href="/about" data-page="about">About</a></li>
                 <li><a href="/licensing" data-page="licensing">Licensing</a></li>
@@ -127,11 +128,10 @@
                 </div>
             </section>
 
-<!-- hidden until Explainers and Apologetics are added later
             <section class="section" style="padding-top:0;">
                 <div class="section-header">
-                    <h2>Three separate places</h2>
-                    <p>Original lessons stay apart from AI-assisted explainers and from apologetics.</p>
+                    <h2>Separate places</h2>
+                    <p>Original lessons stay apart from explainers and from apologetics.</p>
                 </div>
                 <div class="user-types">
                     <article class="user-card">
@@ -143,18 +143,19 @@
                     <article class="user-card">
                         <p class="audience-rank">Free to watch</p>
                         <h3>Explainers</h3>
-                        <p>A separate page for short AI-assisted videos. None have been added yet. Each one will be marked: AI-assisted explainer, reviewed by Tebogo Mokwena.</p>
-                        <a href="/explainers" class="btn btn-white" data-page="explainers">Open explainers</a>
+                        <p>Eighteen short films, free to watch.</p>
+                        <a href="/explainers/" class="btn btn-white">Open explainers</a>
                     </article>
+                    <!-- hidden until added later
                     <article class="user-card">
                         <p class="audience-rank">Added later</p>
                         <h3>Apologetics</h3>
                         <p>A separate page for apologetics videos and articles, including on African Traditional Religion and syncretism with Christianity. Nothing has been added yet.</p>
                         <a href="/apologetics" class="btn btn-white" data-page="apologetics">Open apologetics</a>
                     </article>
+                    -->
                 </div>
             </section>
-            -->
 
             <section class="facts-bar" aria-label="What is true of this site today">
                 <div class="facts-grid">
@@ -225,11 +226,7 @@
                 <p style="margin-top:12px;">Separate from the six original lessons.</p>
             </section>
             <section class="section">
-                <div class="page-label">
-                    <p class="label-caption">Every video on this page is marked:</p>
-                    <p class="ai-label" data-ai-label>AI-assisted explainer, reviewed by Tebogo Mokwena</p>
-                </div>
-                <p class="empty-state" id="explainersEmpty">No explainer videos have been added yet. When one is published, it will appear here, free to watch, with the label above on the card.</p>
+                <p class="empty-state" id="explainersEmpty">No explainer videos have been added yet. When one is published, it will appear here, free to watch.</p>
                 <div class="videos-grid" id="explainersGrid" hidden></div>
             </section>
         </div>
@@ -242,8 +239,6 @@
             <section class="section">
                 <div id="apologeticsEmpty">
                     <p class="empty-state">No apologetics videos or articles have been added yet. This introduction can be edited in the content manager.</p>
-                    <p class="label-caption" style="margin-top:28px;">An AI-assisted piece on this page uses this label:</p>
-                    <p class="ai-label page-label" data-ai-label>AI-assisted explainer, reviewed by Tebogo Mokwena</p>
                 </div>
                 <div class="piece-list" id="apologeticsList" hidden></div>
             </section>
@@ -636,7 +631,7 @@
                 <ul class="footer-links">
                     <li><a href="/content" data-page="content">Original lessons</a></li>
                     <li><a href="/curriculum" data-page="curriculum">Curriculum</a></li>
-                    <!-- hidden until added later (nav): <li><a href="/explainers" data-page="explainers">Explainers</a></li> -->
+                    <li><a href="/explainers/">Explainers</a></li>
                     <!-- hidden until added later (nav): <li><a href="/apologetics" data-page="apologetics">Apologetics</a></li> -->
                     <li><a href="/about" data-page="about">About</a></li>
                 </ul>
@@ -665,5 +660,6 @@
     </footer>
 
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/preview-banner.js"></script>
 </body>
 </html>

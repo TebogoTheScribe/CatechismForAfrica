@@ -40,10 +40,17 @@
   to = "/"
   status = 200
 
+# Explainers is a real section (index + one page per film).
+# Keep /apologetics rewriting to the homepage until that section is added.
 [[redirects]]
   from = "/explainers"
-  to = "/"
-  status = 200
+  to = "/explainers/"
+  status = 301
+
+[[redirects]]
+  from = "/explainers/:slug"
+  to = "/explainers/:slug/"
+  status = 301
 
 # Curriculum index is a section of the home page, like the other routes.
 # Each /curriculum/session-N/ page is a real file and must not be rewritten here.

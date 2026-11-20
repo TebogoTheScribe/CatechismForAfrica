@@ -1881,3 +1881,17 @@ body:has(#curriculum.active) .review-footnote.curriculum-only { display: block; 
 }
 .session-player--portrait .session-stage { padding-bottom: 177.78%; }
 .session-player--portrait .session-poster-btn img { object-fit: cover; }
+
+/* Mobile / Desktop video switch: compact segmented control */
+.version-tabs {
+    display: flex;
+    gap: 6px;
+    max-width: 280px;
+    margin: 0 auto 12px;
+}
+.version-tab {
+    flex: 1 1 0;
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 14px;
+}

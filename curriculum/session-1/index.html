@@ -59,20 +59,33 @@
                 -->
                 <script type="application/json" id="session-media">
                 {
-    "id": "session-1",
-    "title": "Welcome Home: The Restless Heart",
-    "poster": "/curriculum/session-1/slides/s01-poster-9x16.jpg",
-    "versions": [
-        {
-            "id": "chant",
-            "label": "Chant",
-            "file": "/curriculum/session-1/media/s01-chant-9x16.mp4",
-            "youtubeId": ""
-        }
-    ]
-}
+                    "id": "session-1",
+                    "title": "Welcome Home: The Restless Heart",
+                    "poster": "/curriculum/session-1/slides/s01-slide-01.jpg",
+                    "autoSelect": true,
+                    "versions": [
+                        {
+                            "id": "mobile",
+                            "label": "Mobile",
+                            "description": "portrait 9:16 video",
+                            "orientation": "portrait",
+                            "file": "/curriculum/session-1/media/s01-chant-9x16.mp4",
+                            "poster": "/curriculum/session-1/slides/s01-poster-9x16.jpg",
+                            "youtubeId": ""
+                        },
+                        {
+                            "id": "desktop",
+                            "label": "Desktop",
+                            "description": "widescreen 16:9 video",
+                            "orientation": "landscape",
+                            "file": "/curriculum/session-1/media/s01-chant-720.mp4",
+                            "poster": "/curriculum/session-1/slides/s01-slide-01.jpg",
+                            "youtubeId": ""
+                        }
+                    ]
+                }
                 </script>
-                <div class="session-player session-player--portrait" id="sessionPlayer">
+                <div class="session-player" id="sessionPlayer">
                     <div class="version-tabs" id="versionTabs" role="tablist" aria-label="Video version"></div>
                     <div class="session-stage" id="playerStage"></div>
                     <p class="version-note" id="versionNote"></p>

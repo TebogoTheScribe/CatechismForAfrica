@@ -8,11 +8,11 @@
   var sources = {
     mobile: {
       id: player.getAttribute("data-youtube-9x16") || "",
-      note: "Mobile: portrait 9:16. Switch to Desktop for the widescreen film."
+      note: "Mobile: portrait 9:16. Switch to Desktop for the widescreen video."
     },
     desktop: {
       id: player.getAttribute("data-youtube-16x9") || "",
-      note: "Desktop: widescreen 16:9. Switch to Mobile for the portrait film."
+      note: "Desktop: widescreen 16:9. Switch to Mobile for the portrait video."
     }
   };
   var title = player.getAttribute("data-title") || "Explainer";
@@ -46,7 +46,7 @@
     stage.innerHTML = "";
     if (!id) {
       var p = document.createElement("p");
-      p.textContent = "This film is not linked yet.";
+      p.textContent = "This video is not linked yet.";
       stage.appendChild(p);
       return;
     }

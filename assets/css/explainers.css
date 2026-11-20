@@ -144,3 +144,32 @@
     .watch-explainer { grid-template-columns: 96px 1fr; gap: 16px; }
     .curriculum-link .btn + .btn { margin-left: 0; margin-top: 8px; display: inline-block; }
 }
+
+/* Catechism references, in a soft gold callout on explainer detail pages. */
+.ccc-callout {
+    background: #f8f1d4;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px 18px;
+    margin: 4px 0 20px;
+    color: var(--text);
+}
+.ccc-callout h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+.ccc-callout p,
+.ccc-callout li {
+    color: var(--text);
+}
+.ccc-callout a {
+    color: var(--primary);
+}
+.ccc-callout p:last-child {
+    margin-bottom: 0;
+}
+@media (max-width: 700px) {
+    .ccc-callout {
+        padding: 14px 16px 16px;
+    }
+}

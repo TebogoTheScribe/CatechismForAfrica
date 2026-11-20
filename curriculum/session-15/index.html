@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/explainers.css">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -26,7 +27,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/content">Lessons</a></li>
                 <li><a href="/curriculum" class="active" aria-current="page">Curriculum</a></li>
-                <!-- hidden until added later (nav): <li><a href="/explainers">Explainers</a></li> -->
+                <li><a href="/explainers/">Explainers</a></li>
                 <!-- hidden until added later (nav): <li><a href="/apologetics">Apologetics</a></li> -->
                 <li><a href="/about">About</a></li>
                 <li><a href="/licensing">Licensing</a></li>
@@ -89,6 +90,20 @@
                     <div class="version-tabs" id="versionTabs" role="tablist" aria-label="Video version"></div>
                     <div class="session-stage" id="playerStage"></div>
                     <p class="version-note" id="versionNote"></p>
+                </div>
+            </section>
+            <section class="watch-explainer" aria-labelledby="watch-heading">
+                <div class="watch-thumb">
+                    <a href="/explainers/confirmation/"><img src="/assets/images/explainers/13-confirmation-9x16.jpg" alt="" width="1080" height="1920"></a>
+                </div>
+                <div>
+                    <h2 id="watch-heading">Watch the explainer</h2>
+                    <p><strong>Confirmation</strong> — Confirmation completes baptismal grace and strengthens us for mission through the gift of the Holy Spirit. About 1 min 12 s.</p>
+                    <p>A short film to watch before or after this session. Further short films for this session are linked below.</p>
+                    <p>
+                        <a class="btn btn-primary" href="/explainers/confirmation/">Watch the explainer</a>
+                    </p>
+                    <p class="watch-more">Also on this session: <a href="/explainers/seven-sacraments/">The Seven Sacraments</a></p>
                 </div>
             </section>
             <section class="session-block" id="slides" aria-labelledby="slides-heading">
@@ -202,7 +217,7 @@
                 <ul class="footer-links">
                     <li><a href="/content">Original lessons</a></li>
                     <li><a href="/curriculum">Curriculum</a></li>
-                    <!-- hidden until added later (nav): <li><a href="/explainers">Explainers</a></li> -->
+                    <li><a href="/explainers/">Explainers</a></li>
                     <!-- hidden until added later (nav): <li><a href="/apologetics">Apologetics</a></li> -->
                     <li><a href="/about">About</a></li>
                 </ul>
@@ -231,5 +246,6 @@
     </footer>
 
     <script src="/assets/js/session.js"></script>
+    <script src="/assets/js/preview-banner.js"></script>
 </body>
 </html>

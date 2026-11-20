@@ -40,7 +40,7 @@
   to = "/"
   status = 200
 
-# Explainers is a real section (index + one page per film).
+# Explainers is a real section (index + one page per video).
 # Keep /apologetics rewriting to the homepage until that section is added.
 [[redirects]]
   from = "/explainers"

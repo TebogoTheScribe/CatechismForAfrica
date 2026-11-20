@@ -142,14 +142,45 @@
                 file: trim(version.file),
                 youtubeId: validYouTubeId(version.youtubeId),
                 captions: trim(version.captions),
-                note: trim(version.note)
+                note: trim(version.note),
+                description: trim(version.description),
+                orientation: trim(version.orientation),
+                poster: trim(version.poster)
             };
         });
         var poster = trim(config.poster);
         var title = trim(config.title) || "Session video";
         var current = 0;
         var several = versions.length > 1;
+        var STORE_KEY = "cfa-video-format";
 
+        function indexOf(id) {
+            for (var i = 0; i < versions.length; i += 1) {
+                if (versions[i].id === id) return i;
+            }
+            return -1;
+        }
+
+        function remember(id) {
+            if (!config.autoSelect) return;
+            try { window.localStorage.setItem(STORE_KEY, id); } catch (err) { /* storage blocked */ }
+        }
+
+        /* Saved choice first; otherwise portrait or narrow screens get the portrait version. */
+        function initialIndex() {
+            if (!config.autoSelect) return 0;
+            var saved = "";
+            try { saved = window.localStorage.getItem(STORE_KEY) || ""; } catch (err) { saved = ""; }
+            var savedIndex = saved ? indexOf(saved) : -1;
+            if (savedIndex >= 0) return savedIndex;
+            var narrow = window.matchMedia && window.matchMedia("(orientation: portrait), (max-width: 760px)").matches;
+            for (var i = 0; i < versions.length; i += 1) {
+                if ((versions[i].orientation === "portrait") === !!narrow) return i;
+            }
+            return 0;
+        }
+
+        if (several) stage.setAttribute("role", "tabpanel");
         if (!several) {
             tabs.hidden = true;
             stage.removeAttribute("role");
@@ -166,8 +197,13 @@
             button.setAttribute("aria-controls", "playerStage");
             button.setAttribute("data-version", version.id || String(index));
             button.textContent = version.label;
+            if (version.description) {
+                button.setAttribute("aria-label", version.label + " (" + version.description + ")");
+                button.title = version.description.charAt(0).toUpperCase() + version.description.slice(1);
+            }
             button.addEventListener("click", function () {
                 select(index);
+                remember(versions[index].id);
             });
             tabs.appendChild(button);
         });
@@ -193,11 +229,12 @@
                 note.textContent = version.note || "";
                 note.hidden = !version.note;
             }
+            root.classList.toggle("session-player--portrait", version.orientation === "portrait");
             clear(stage);
             if (version.youtubeId) {
                 mountYouTube(stage, version, title);
             } else if (version.file) {
-                mountFile(stage, version, poster, title);
+                mountFile(stage, version, version.poster || poster, title);
             } else {
                 stage.appendChild(fallback("This video is not linked yet. Add a youtubeId or a file path in the session media config."));
             }
@@ -213,12 +250,13 @@
                 if (event.key === "Home") next = 0;
                 if (event.key === "End") next = versions.length - 1;
                 select(next);
+                remember(versions[next].id);
                 var tabButtons = buttons();
                 if (tabButtons[next]) tabButtons[next].focus();
             });
         }
 
-        select(0);
+        select(initialIndex());
     }
 
     function initSlides() {
